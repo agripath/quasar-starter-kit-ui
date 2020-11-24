@@ -56,7 +56,7 @@ function installDependencies (cwd, executable = 'npm', color) {
  * @param {string} cwd Path of the created project directory
  * @param {object} data Data from questionnaire
  */
-function installDependencies (cwd, executable = 'npm', color) {
+function installDotEnvExtension (cwd, executable = 'npm', color) {
   console.log(`\n\n ${color('[*] Installing project dependencies ...')}\n`)
   return runCommand(executable, ['quasar ext invoke @quasar/dotenv'], { cwd })
 }
@@ -166,6 +166,7 @@ exports.complete = function (data, { chalk }) {
   if (data.autoInstall) {
     installDependencies(cwd, data.autoInstall, green)
       .then(() => installDependencies(path.join(cwd, 'dev'), data.autoInstall, green))
+      .then(() => installDotEnvExtension(path.join(cwd, 'dev'), data.autoInstall, green))
       .then(() => {
         printMessage(data, green)
       })
