@@ -53,6 +53,7 @@ module.exports = {
     umdExportName: {
       type: 'string',
       message: 'UMD export name (global variable, camelCased)',
+      default: 'myComponent',
       validate: val => val && val.length > 0
     },
 
@@ -68,7 +69,7 @@ module.exports = {
       type: 'confirm',
       when: 'features.component',
       message: 'Do you need a stylesheet for your component?',
-      default: true
+      default: false
     },
 
     directiveName: {
