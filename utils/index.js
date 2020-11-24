@@ -8,7 +8,7 @@ const
  * They are unsorted because they were grouped for the handlebars helpers
  * @param {object} data Data from questionnaire
  */
-function sortDependencies(data) {
+function sortDependencies (data) {
   const pkgFile = path.join(
     data.inPlace ? '' : data.destDirName,
     'ui/package.json'
@@ -30,7 +30,7 @@ function sortDependencies(data) {
   }
 }
 
-function sortObject(object) {
+function sortObject (object) {
   // Based on https://github.com/yarnpkg/yarn/blob/v1.3.2/src/config.js#L79-L85
   const sortedObject = {}
   Object.keys(object)
@@ -46,9 +46,19 @@ function sortObject(object) {
  * @param {string} cwd Path of the created project directory
  * @param {object} data Data from questionnaire
  */
-function installDependencies(cwd, executable = 'npm', color) {
+function installDependencies (cwd, executable = 'npm', color) {
   console.log(`\n\n ${color('[*] Installing project dependencies ...')}\n`)
   return runCommand(executable, ['install'], { cwd })
+}
+
+/**
+ * Runs `quasar ext invoke @quasar/dotenv` in the dev directory
+ * @param {string} cwd Path of the created project directory
+ * @param {object} data Data from questionnaire
+ */
+function installDependencies (cwd, executable = 'npm', color) {
+  console.log(`\n\n ${color('[*] Installing project dependencies ...')}\n`)
+  return runCommand(executable, ['quasar ext invoke @quasar/dotenv'], { cwd })
 }
 
 /**
@@ -56,7 +66,7 @@ function installDependencies(cwd, executable = 'npm', color) {
  * containing the instruction for this step.
  * @param {Object} data Data from the questionnaire
  */
-function installMsg(data) {
+function installMsg (data) {
   return !data.autoInstall ? '  Run "yarn" (or if using npm: "npm install") into /ui and /ui/dev\n  ' : ''
 }
 
@@ -68,7 +78,7 @@ function installMsg(data) {
  * @param {array<string>} args
  * @param {object} options
  */
-function runCommand(cmd, args, options) {
+function runCommand (cmd, args, options) {
   return new Promise((resolve, reject) => {
     const spwan = spawn(
       cmd,
@@ -101,7 +111,7 @@ function runCommand(cmd, args, options) {
  * Prints the final message with instructions of necessary next steps.
  * @param {Object} data Data from questionnaire.
  */
-function printMessage(data, { green, yellow }) {
+function printMessage (data, { green, yellow }) {
   const message = `
  ${green('[*] Quasar UI Project initialization finished!')}
 
