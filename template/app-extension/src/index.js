@@ -8,15 +8,10 @@
 
 function extendConf (conf) {
   // register our boot file
-  conf.boot.push('~quasar-app-extension-{{name}}/src/boot/register.js')
+  // conf.boot.push('~quasar-app-extension-{{name}}/src/boot/register.js')
 
   // make sure app extension files & ui package gets transpiled
   conf.build.transpileDependencies.push(/quasar-app-extension-{{name}}[\\/]src/)
-{{#or componentCss directiveCss}}
-
-  // make sure the stylesheet goes through webpack to avoid SSR issues
-  conf.css.push('~quasar-ui-{{name}}/src/index.sass')
-{{/or}}
 }
 
 module.exports = function (api) {
