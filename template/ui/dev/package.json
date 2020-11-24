@@ -12,6 +12,10 @@
     "dev:electron": "quasar dev -m electron"
   },
   "dependencies": {
+    "@agripath/orm-classes": "^1.0.1",
+    "@agripath/vuex-orm-rest": "^1.0.1",
+    "@vuex-orm/core": "^0.36.3",
+    "lodash-es": "^4.17.15",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.0.0"
   },
